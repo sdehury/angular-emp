@@ -1,0 +1,70 @@
+<div class="menu">
+  <button type="button" class="btn btn-success" (click)="edit()">Add Employee</button>
+  <!-- <button type="button" class="btn btn-secondary">Edit</button>
+  <button type="button" class="btn btn-danger" (click)="delete('')">Delete</button> -->
+
+  <label for="search" class="search"><input type="text" id="search" class="search" [(ngModel)]="Fname" name="Fname" placeholder="Enter name to search">
+    <button  style="margin-left: 5px; border: 1px solid black;" name="search" id="Fname" (click)="search()">Search</button>
+  </label> 
+ 
+</div>
+
+<div class="emp_div">
+<table class="table emp_table table-bordered table-striped" style="margin-top: 50px;">
+  <thead>
+    <tr style="background-color: royalblue; color: white; border: 1px solid black;">
+      <th scope="col">EMPID</th>
+      <th scope="col">Name</th>
+      <th scope="col">DESIG</th>
+      <th scope="col">SALARY</th>
+      <th scope="col">BONUS</th>
+      <th scope="col">T.SAL</th>
+      <th scope="col" style="text-align: center;">ACTION</th>
+    </tr>
+  </thead>
+  <tbody  *ngFor='let emp of employees'>
+    <tr style="border: 2px solid black;">
+     <td>{{emp.id}}</td>
+     <td>{{emp.name}}</td>
+     <td>{{emp.desg}}</td>
+     <td>{{emp.salary}}</td>
+     <td>{{emp.bonus}}</td>
+     <td>{{emp.totalsal}}</td>
+     <td style="margin-left: 40px;text-align: center;"><button class="btn btn-warning"  (click)="edit(emp)">Edit</button>
+      <button class="btn btn-danger" style="margin-left: 10px;" (click)="delete(emp)">Delete</button>
+     </td>
+  </tbody>
+</table>
+</div>
+<!-- <div class="popup" *ngIf="popup">
+<h4>Add Record</h4>
+ <div class="table_div">
+<form [formGroup]="Empdtls">
+  <table class="popup_table" style="margin:10px 0 0 0">
+ <tr style="margin-left:5px"><td>Name:</td><td><input type="text" formControlName='name'></td></tr>
+<tr style="margin-left: 5px"><td > ID:</td><td><input type="text" formControlName="id"></td></tr>
+<tr style="margin-left: 5px"><td > Designation:</td><td><input type="text"   formControlName="desg"></td></tr>
+<tr style="margin-left: 5px"><td > Salary:</td><td><input type="text"  formControlName="salary"></td></tr>
+<tr style="margin-left: 5px"><td > Bonus:</td><td><input type="text"  formControlName="bonus"></td></tr>
+<tr> <td><button class="btn btn-success" style="margin: 15px 10px 5px 10px;" (click)="save()">Save</button></td>
+<td><button class="btn btn-danger" style="margin:15px 10px 5px 170px;"  (click)="cancel()">Cancel</button></td></tr>
+</table>
+</form>
+</div>
+</div> -->
+<div class="popup" *ngIf="enableedit">
+<h4>Add/Edit Employee</h4>
+ <div class="table_div">
+<form [formGroup]="Editedform">
+  <table class="popup_table" style="margin:10px 0 0 0">
+ <tr style="margin-left:5px"><td>Name:</td><td><input type="text"  class="name" id='name' name="name" formControlName='name'></td></tr>
+<tr style="margin-left: 5px"><td > ID:</td><td><input type="text" name="id"  formControlName="id" ></td></tr>
+<tr style="margin-left: 5px"><td > Designation:</td><td><input type="text" name="Desg"  formControlName="desg"></td></tr>
+<tr style="margin-left: 5px"><td > Salary:</td><td><input type="text" name="sal"  formControlName="salary"></td></tr>
+<tr style="margin-left: 5px"><td > Bonus:</td><td><input type="text" name="bonus"  formControlName="bonus"></td></tr>
+<tr> <td><button class="btn btn-success" style="margin: 15px 10px 5px 10px;" id="savebtn" (click)="save()">Save</button></td>
+<td><button class="btn btn-danger" style="margin:15px 10px 5px 170px;"  (click)="cancel()">Cancel</button></td></tr>
+</table>
+</form>
+</div>
+</div>
